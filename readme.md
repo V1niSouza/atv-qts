@@ -1,4 +1,3 @@
-cat > README.md << 'EOF'
 # 📦 Projeto Flask
 
 Este projeto é uma aplicação web desenvolvida em Flask, estruturada para facilitar o desenvolvimento, testes e manutenção. Ele inclui configuração de ambiente virtual, execução local e suíte de testes automatizados (incluindo testes E2E).
@@ -60,7 +59,6 @@ Os testes E2E iniciam automaticamente o servidor Flask durante o pytest, então 
 
 ---
 
-## 👨‍💻 Autor
+## Autor
 
 Vinícius Souza Ramos
-EOF

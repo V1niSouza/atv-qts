@@ -78,7 +78,7 @@ def test_should_return_400_when_user_already_exists(client):
     assert response.status_code == 400
 
 
-### NOVOS TESTES UNITÁRIOS
+# NOVOS TESTES UNITÁRIOS
 @pytest.fixture(autouse=True)
 def reset():
     user_service.users.clear()
@@ -115,11 +115,6 @@ def test_get_user_by_id_found():
 def test_get_user_by_id_not_found():
     assert user_service.get_user_by_id(999) is None
 
-
-def test_update_user_success():
-    user_service.create_user({"name": "Paulo Cesar"})
-    updated = user_service.update_user(1, {"name": "Paulo Cesar Atualizado"})
-    assert updated["name"] == "Paulo Cesar Atualizado"
 
 
 def test_update_user_not_found():

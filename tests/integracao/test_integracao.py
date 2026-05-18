@@ -31,10 +31,10 @@ def test_create_and_update_user(client):
 
     user_id = created.get_json()["id"]
 
-    response = client.put(f"/users/{user_id}", json={"name": "paulo cesar candiani"})
+    response = client.put(f"/users/{user_id}", json={"name": "paulo cesar"})
 
     assert response.status_code == 200
-    assert response.get_json()["name"] == "paulo cesar candiani"
+    assert response.get_json()["name"] == "paulo cesar"
 
 
 def test_create_and_delete_user(client):
@@ -65,7 +65,7 @@ def test_update_nonexistent_user(client):
     assert response.status_code == 404
 
 
-### NOVOS TESTES DE INTEGRAÇÃO
+# NOVOS TESTES DE INTEGRAÇÃO
 def test_create_and_get_user_vinicius(client):
     r = client.post("/users", json={"name": "Vinicius Souza"})
     user_id = r.get_json()["id"]

@@ -44,8 +44,7 @@ def test_list_users(client):
     assert response.status_code == 200
     assert len(data) == 2
 
-
-### NOVOS TESTES FUNCIONAIS
+# NOVOS TESTES FUNCIONAIS
 @pytest.fixture
 def client():
     app = create_app()

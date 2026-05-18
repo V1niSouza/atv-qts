@@ -1,6 +1,6 @@
 from selenium import webdriver
 from selenium.webdriver.common.by import By
-import time
+from selenium.webdriver.support.ui import WebDriverWait
 
 
 # Teste correto usando wait
@@ -29,7 +29,7 @@ def test_create_user_e2e_wait():
 
     driver.quit()
 
-### NOVOS TESTES E2E
+# NOVOS TESTES E2E
 def test_e2e_create_user_vinicius():
     driver = webdriver.Chrome()
     driver.get("http://localhost:5000")

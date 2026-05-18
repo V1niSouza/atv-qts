@@ -1,21 +1,5 @@
 import pytest
-from app import create_app
 from app.services import user_service
-
-# def test_health_check():
-#     app = create_app()
-#     client = app.test_client()
-
-#     response = client.get("/status")
-
-#     assert response.status_code == 200
-#     assert response.get_json() == {"status": "ok"}
-
-
-@pytest.fixture
-def client():
-    app = create_app()
-    return app.test_client()
 
 
 @pytest.fixture(autouse=True)
@@ -79,12 +63,6 @@ def test_should_return_400_when_user_already_exists(client):
 
 
 # NOVOS TESTES UNITÁRIOS
-@pytest.fixture(autouse=True)
-def reset():
-    user_service.users.clear()
-    user_service.current_id = 1
-
-
 def test_get_all_users_empty():
     assert user_service.get_all_users() == []
 
@@ -114,7 +92,6 @@ def test_get_user_by_id_found():
 
 def test_get_user_by_id_not_found():
     assert user_service.get_user_by_id(999) is None
-
 
 
 def test_update_user_not_found():

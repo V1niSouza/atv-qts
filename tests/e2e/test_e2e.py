@@ -10,6 +10,7 @@ def test_create_user_e2e_wait():
     input_name.send_keys("Maylon")
     driver.find_element(By.ID, "submit").click()
     from selenium.webdriver.support.ui import WebDriverWait
+
     wait = WebDriverWait(driver, 5)
     wait.until(
         lambda d: any("Maylon" in el.text for el in d.find_elements(By.TAG_NAME, "li"))

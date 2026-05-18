@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8"/>
+  <title>Usuários</title>
+  <style>
+    body { font-family: sans-serif; max-width: 480px; margin: 40px auto; padding: 0 16px; }
+    h1 { font-size: 1.3rem; margin-bottom: 16px; }
+    .row { display: flex; gap: 8px; margin-bottom: 24px; }
+    input { flex: 1; padding: 8px 10px; border: 1px solid #ccc; border-radius: 4px; font-size: .9rem; }
+    button { padding: 8px 16px; background: #3b82f6; color: white; border: none; border-radius: 4px; cursor: pointer; font-size: .9rem; }
+    button:hover { background: #2563eb; }
+    ul { list-style: none; padding: 0; margin: 0; }
+    li { padding: 8px 10px; border-bottom: 1px solid #eee; font-size: .9rem; }
+    li:last-child { border-bottom: none; }
+  </style>
+</head>
+<body>
+  <h1>Cadastro de Usuários</h1>
+  <div class="row">
+    <input type="text" id="name" placeholder="Nome do usuário"/>
+    <button id="submit">Cadastrar</button>
+  </div>
+  <ul id="users"></ul>
+
+  <script>
+    async function loadUsers() {
+      const response = await fetch("/users");
+      const users = await response.json();
+      const list = document.getElementById("users");
+      list.innerHTML = "";
+      users.forEach(user => {
+        const li = document.createElement("li");
+        li.innerText = user.name;
+        list.appendChild(li);
+      });
+    }
+
+    document.getElementById("submit").addEventListener("click", async () => {
+      const name = document.getElementById("name").value.trim();
+      if (!name) return;
+      await fetch("/users", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ name })
+      });
+      document.getElementById("name").value = "";
+      loadUsers();
+    });
+
+    document.getElementById("name").addEventListener("keydown", e => {
+      if (e.key === "Enter") document.getElementById("submit").click();
+    });
+
+    loadUsers();
+  </script>
+</body>
+</html>

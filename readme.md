@@ -1,4 +1,4 @@
-# 📦 Projeto Flask
+# 📦 Projeto Testes - CI/CD
 
 Este projeto é uma aplicação web desenvolvida em Flask, estruturada para facilitar o desenvolvimento, testes e manutenção. Ele inclui configuração de ambiente virtual, execução local e suíte de testes automatizados (incluindo testes E2E).
 
